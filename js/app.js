@@ -2,6 +2,8 @@
 
   const startButton = document.querySelector('.btn__reset');
   const gameButtons = document.querySelectorAll('button');
+  const qwerty = document.querySelector('#qwerty');
+  const phrase = document.querySelector('#phrase');
 
   //Phrases
 
