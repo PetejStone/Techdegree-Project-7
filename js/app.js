@@ -1,6 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+
   const startButton = document.querySelector('.btn__reset');
-  const gameButtons = document.querySelectorAll('button')[1];
+  const gameButtons = document.querySelectorAll('button');
 
   //Phrases
 
@@ -21,9 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.style.display = 'none';
   })
 
-  gameButtons.addEventListener('click', () => {
-
-    console.log('yay');
-
+for (let i = 0; i < gameButtons.length; i += 1) {
+  gameButtons[i].addEventListener('click', () => {
+    console.log(gameButtons[i].textContent);
   })
-})
+}
