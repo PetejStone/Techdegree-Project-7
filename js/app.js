@@ -38,12 +38,14 @@ const phrases = {
   const phraseArray = getRandomPhraseArray(phrases);
 
   function addPhraseToDisplay(arr) {
-    let li = document.createElement('li');
-    li.textContent = phraseArray;
-    phrase.appendChild(li);
-      // do stuff any arr that is passed in, and add to `#phrase ul`
-  }
 
+    for (let i = 0; i < phraseArray.length; i += 1) {
+      let li = document.createElement('li');
+      li.textContent = phraseArray[i]
+      phrase.appendChild(li);
+
+  }
+}
   addPhraseToDisplay(phraseArray);
 
 
