@@ -16,6 +16,7 @@ const phrases = {
   let random = Math.floor(Math.random()*Object.values(phrases).length)+1;
   let missed = 0;
 
+
 //Constant variables for the game
   const startButton = document.querySelector('.btn__reset');
   const gameButtons = document.querySelectorAll('button');
@@ -34,6 +35,7 @@ const phrases = {
       let newPhrase = Object.values(arr)[random].split('');
       return newPhrase
     }
+
   getRandomPhraseArray(phrases);
   const phraseArray = getRandomPhraseArray(phrases);
 
@@ -43,10 +45,31 @@ const phrases = {
       let li = document.createElement('li');
       li.textContent = phraseArray[i]
       phrase.appendChild(li);
-
+       if (li.textContent !== ' ') {
+         li.className = 'letter';
+    }
   }
 }
   addPhraseToDisplay(phraseArray);
+
+let correct = document.querySelectorAll('.letter');
+
+for (let i = 0; i < correct.length; i += 1) {
+   let guess = correct[i].textContent;
+
+
+
+  for (let i = 0; i < gameButtons.length; i += 1) {
+   gameButtons[i].addEventListener('click', () => {
+         if (event.target.textContent === guess) {
+           if (correct[i].textContent === guess) {
+             correct[i].className = 'show';
+           }
+         }
+       })
+     }
+    }
+
 
 
 
