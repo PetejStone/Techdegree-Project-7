@@ -55,11 +55,10 @@ const phrases = {
 
 let correct = document.querySelectorAll('.letter');
 
+
 for (let i = 0; i < correct.length; i += 1) {
    let guess = correct[i].textContent;
    let show = correct[i]
-
-
 
   for (let i = 0; i < gameButtons.length; i += 1) {
    gameButtons[i].addEventListener('click', () => {
@@ -80,6 +79,45 @@ for (let i = 0; i < correct.length; i += 1) {
            }
          })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// for (let i = 0; i < correct.length; i += 1) {
+//    let guess = correct[i].textContent;
+//    let show = correct[i]
+//
+//   for (let i = 0; i < gameButtons.length; i += 1) {
+//    gameButtons[i].addEventListener('click', () => {
+//          if (event.target.textContent.toUpperCase() === guess.toUpperCase()) {
+//           console.log(guess);
+//           show.className = 'show';
+//
+//          }
+//        })
+//      }
+//
+//
+//      window.addEventListener('keypress', () => {
+//            if (event.key.toUpperCase() === guess.toUpperCase()) {
+//             console.log(guess);
+//             show.className = 'show';
+//
+//            }
+//          })
+// }
 
 
 
