@@ -35,10 +35,11 @@ const phrases = {
       let newPhrase = Object.values(arr)[random].split('');
       return newPhrase
     }
-
+//Calls function above, get's it's return value and sets it to a new variable
   getRandomPhraseArray(phrases);
   const phraseArray = getRandomPhraseArray(phrases);
 
+//Function that adds the random phrase and creates a list item for each letter
   function addPhraseToDisplay(arr) {
 
     for (let i = 0; i < phraseArray.length; i += 1) {
@@ -51,6 +52,7 @@ const phrases = {
    }
   }
 }
+//calling function above by using the phrase array as an argument
   addPhraseToDisplay(phraseArray);
 
 
