@@ -74,14 +74,14 @@ for (let i = 0; i < correct.length; i += 1) {
    gameButtons[i].addEventListener('click', () => {
          if (event.target.textContent.toUpperCase() === guess.toUpperCase()) {
           console.log(guess);
-          show.className = 'show';
+          show.className = 'show'; //loops through all the correct items that = the event.target  and adds the class name 'show'
 
          }
        })
      }
 
 //Same as above, except it listens for keyboard presses and sets those values
-// to uppercase without worrying about case sensitivity.
+// to uppercase without worrying about case sensitivity, then adds the class name 'show'
      window.addEventListener('keypress', () => {
            if (event.key.toUpperCase() === guess.toUpperCase()) {
             console.log(guess);
