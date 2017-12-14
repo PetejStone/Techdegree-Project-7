@@ -53,13 +53,23 @@ const phrases = {
 }
   addPhraseToDisplay(phraseArray);
 
+
+//Variable with the class name 'letter' added to the name 'correct'
 let correct = document.querySelectorAll('.letter');
 
-
+// For loop that loops through the number of classes titled 'correct' and
+// gets the value of their text content. Also creates a new variable named
+// 'show' which will be used to add the class name 'show' to all 'correct' classes
+///containing that letter
 for (let i = 0; i < correct.length; i += 1) {
    let guess = correct[i].textContent;
-   let show = correct[i]
+   let show = correct[i];
 
+// For loop that loops through the game buttons length and listens for a 'click'
+// on each one.
+//Also set the value to Upper Case on both so that the user did not have to
+//worry about case sensitive answers
+///guess value is logged to console if correct and
   for (let i = 0; i < gameButtons.length; i += 1) {
    gameButtons[i].addEventListener('click', () => {
          if (event.target.textContent.toUpperCase() === guess.toUpperCase()) {
@@ -70,7 +80,8 @@ for (let i = 0; i < correct.length; i += 1) {
        })
      }
 
-
+//Same as above, except it listens for keyboard presses and sets those values
+// to uppercase without worrying about case sensitivity.
      window.addEventListener('keypress', () => {
            if (event.key.toUpperCase() === guess.toUpperCase()) {
             console.log(guess);
