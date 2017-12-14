@@ -106,6 +106,7 @@ button:hover{
 .show {
   color: #000;
   background-color: #76CE82;
+  font-size: 3em;
 }
 
 /* Keyboard */

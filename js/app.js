@@ -47,7 +47,8 @@ const phrases = {
       phrase.appendChild(li);
        if (li.textContent !== ' ') {
          li.className = 'letter';
-    }
+    } else { li.className = 'space';
+   }
   }
 }
   addPhraseToDisplay(phraseArray);
@@ -56,19 +57,40 @@ let correct = document.querySelectorAll('.letter');
 
 for (let i = 0; i < correct.length; i += 1) {
    let guess = correct[i].textContent;
+   let show = correct[i]
 
 
 
   for (let i = 0; i < gameButtons.length; i += 1) {
    gameButtons[i].addEventListener('click', () => {
-         if (event.target.textContent === guess) {
-           if (correct[i].textContent === guess) {
-             correct[i].className = 'show';
-           }
+         if (event.target.textContent.toUpperCase() === guess.toUpperCase()) {
+          console.log(guess);
+          show.className = 'show';
+
          }
        })
      }
-    }
+
+
+     window.addEventListener('keypress', () => {
+           if (event.key.toUpperCase() === guess.toUpperCase()) {
+            console.log(guess);
+            show.className = 'show';
+
+           }
+         })
+}
+
+
+
+
+
+
+// for (let i = 0; i < correct.length; i += 1) {
+//   if (correct[i] === guess) {
+//     correct[i].className = 'show';
+//   }
+// }
 
 
 
