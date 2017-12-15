@@ -97,6 +97,7 @@ button:hover{
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 .space {
@@ -106,7 +107,8 @@ button:hover{
 .show {
   color: #000;
   background-color: #76CE82;
-  font-size: 3em;
+  transition: 1.5s;
+
 }
 
 /* Keyboard */

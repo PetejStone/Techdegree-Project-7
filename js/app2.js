@@ -65,7 +65,7 @@ function buttonEvent(btns){
 }
 const buttonClick = buttonEvent(gameButtons);
   //check letter function
-
+let correct = document.querySelectorAll('.letter');
   function checkLetter(buttonClick) {
     let correct = document.querySelectorAll('.letter');
     let show = correct[i];

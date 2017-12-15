@@ -1,3 +1,4 @@
+
 //Phrases defined at top so I can use them in variables below
 const phrases = [
   'Peter Piper picked a pack of pickled relish',
@@ -10,6 +11,7 @@ const phrases = [
   'Rudolph the blue nose reindeer',
   'Jack and Jill climbed up the ladder',
 ];
+
 
 //Random number to be generated between 1 and the number of objects in the arrary
 // Missed variable set to 'zero' to start the game
@@ -56,51 +58,54 @@ const phrases = [
   addPhraseToDisplay(phraseArray);
 
 
-//Variable with the class name 'letter' added to the name 'correct'
-let correct = document.querySelectorAll('.letter');
+const correct = document.querySelectorAll('.letter');
+
+//checkLetter Function
+  function checkLetter(buttonClicked) {
+    //Set to upperCase so user doesn't have to worry about case sensitive answers
+    const letterClicked = buttonClicked.textContent.toUpperCase();
+    let letterFound = false; // <-- Default value set to false
+
+      for (let i = 0; i < correct.length; i +=1 ){
+          if (letterClicked === correct[i].textContent.toUpperCase()) {
+              correct[i].classList.add('show');
+              letterFound = true;
+          }
+
+      } return letterFound;
+        return letterClicked
+
+    }
 
 
+//Event Listener
+   window.addEventListener('click', () => {
+         if (event.target.tagName === 'BUTTON') {
+           event.target.className = 'chosen';
+           event.target.disabled = 'true';
 
-// For loop that loops through the number of classes titled 'correct' and
-// gets the value of their text content. Also creates a new variable named
-// 'show' which will be used to add the class name 'show' to all 'correct' classes
-///containing that letter
+           let letterFound = checkLetter(event.target);
 
-for (let i = 0; i < correct.length; i += 1) {
-   let correctAnswer = correct[i].textContent;
-   let show = correct[i];
-
-// For loop that loops through the game buttons length and listens for a 'click'
-// on each one.
-//Also set the value to Upper Case on both so that the user did not have to
-//worry about case sensitive answers
-///guess value is logged to console if correct
-
-
-
-
-
-
-
-
-
-
-
-
-  for (let i = 0; i < gameButtons.length; i += 1) {
-   gameButtons[i].addEventListener('click', () => {
-     event.target.className = 'chosen';
-     event.target.disabled = 'true';
-         if (event.target.textContent.toUpperCase() === correctAnswer.toUpperCase()) {
-           let letterFound = event.target.textContent;
-           let checkLetter = letterFound
-           show.className = 'show'; //loops through all the correct items that = the event.target  and adds the class name 'show'
-           return checkLetter
-        } else {
-          checkLetter = null;
-        }
-       })
+           if (letterFound = null){
+             missed += 1;
+          }
+      }
      }
+    );
+
+for (let i = 0; i < gameButtons.length; i += 1) {
+  for (let i = 0; i < correct.length; i += 1) {
+      window.addEventListener('keypress', () => {
+         if (event.key.toUpperCase() === correct[i].textContent.toUpperCase()) {
+          correct[i].classList.add('show');
+        }
+            if (event.key === gameButtons[i].textContent) {
+              gameButtons[i].disabled = 'true';
+              gameButtons[i].className = 'chosen';
+        }
+      })
+    }
+}
 
 //checking the checkLetter function
 
@@ -108,16 +113,16 @@ for (let i = 0; i < correct.length; i += 1) {
 
 //Same as above, except it listens for keyboard presses and sets those values
 // to uppercase without worrying about case sensitivity, then adds the class name 'show'
-     window.addEventListener('keypress',() => {
-           if (event.key.toUpperCase() === letterFound.toUpperCase()) {
-            return letterFound;
-            show.className = 'show';
-
-          } else {
-            return null;
-          }
-         })
-}
+//      window.addEventListener('keypress',() => {
+//            if (event.key.toUpperCase() === letterFound.toUpperCase()) {
+//             return letterFound;
+//             show.className = 'show';
+//
+//           } else {
+//             return null;
+//           }
+//          })
+// }
 
 
 
