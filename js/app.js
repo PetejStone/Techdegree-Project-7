@@ -45,7 +45,7 @@ const phrases = [
     for (let i = 0; i < phraseArray.length; i += 1) {
       let li = document.createElement('li');
       li.textContent = phraseArray[i]
-      phrase.appendChild(li);
+      phrase.children[0].appendChild(li);
        if (li.textContent !== ' ') {
          li.className = 'letter';
     } else { li.className = 'space';
@@ -65,6 +65,7 @@ let correct = document.querySelectorAll('.letter');
 // gets the value of their text content. Also creates a new variable named
 // 'show' which will be used to add the class name 'show' to all 'correct' classes
 ///containing that letter
+
 for (let i = 0; i < correct.length; i += 1) {
    let correctAnswer = correct[i].textContent;
    let show = correct[i];
@@ -75,19 +76,34 @@ for (let i = 0; i < correct.length; i += 1) {
 //worry about case sensitive answers
 ///guess value is logged to console if correct
 
+
+
+
+
+
+
+
+
+
+
+
   for (let i = 0; i < gameButtons.length; i += 1) {
-   gameButtons[i].addEventListener('click', function checkLetter(event) {
+   gameButtons[i].addEventListener('click', () => {
+     event.target.className = 'chosen';
+     event.target.disabled = 'true';
          if (event.target.textContent.toUpperCase() === correctAnswer.toUpperCase()) {
            let letterFound = event.target.textContent;
+           let checkLetter = letterFound
            show.className = 'show'; //loops through all the correct items that = the event.target  and adds the class name 'show'
-           return letterFound;
+           return checkLetter
         } else {
-          return null;
-          checkLetter(event);
+          checkLetter = null;
         }
-
        })
      }
+
+//checking the checkLetter function
+
 
 
 //Same as above, except it listens for keyboard presses and sets those values
