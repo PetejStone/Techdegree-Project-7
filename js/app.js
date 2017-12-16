@@ -17,18 +17,22 @@ const phrases = [
 // Missed variable set to 'zero' to start the game
   let random = Math.floor(Math.random()*Object.values(phrases).length)+1;
   let missed = 0;
+  let heartsMissing = 0;
 
 
 //Constant variables for the game
   const startButton = document.querySelector('.btn__reset');
+  const title = document.querySelector('.title');
   const gameButtons = document.querySelectorAll('button');
   const qwerty = document.querySelector('#qwerty');
   const phrase = document.querySelector('#phrase');
-
+  const show = document.getElementsByClassName('show');
+  const overlay = document.querySelector('#overlay')
+  const images = document.getElementsByTagName('img');
 //Listens for the startButton to be clicked and sets the overlay display to 'none'
 //revealing the game board
   startButton.addEventListener('click', () => {
-    const overlay = document.querySelector('#overlay');
+
     overlay.style.display = 'none';
   })
 
@@ -54,10 +58,11 @@ const phrases = [
    }
   }
 }
+
 //calling function above by using the phrase array as an argument
   addPhraseToDisplay(phraseArray);
 
-
+//variable to be used in function. Selects all 'letters'
 const correct = document.querySelectorAll('.letter');
 
 //checkLetter Function
@@ -71,58 +76,55 @@ const correct = document.querySelectorAll('.letter');
               correct[i].classList.add('show');
               letterFound = true;
           }
-
-      } return letterFound;
-        return letterClicked
-
+          //Ternary shorthand---
+         //if letterFound is true, then return the letterClicked, if not true,
+        // return 'null'
+      } return letterFound ? letterClicked : null;
     }
 
 
+function checkWin() {
+  if (show.length === correct.length){
+    overlay.className = 'win';
+    overlay.style.display = '';
+    title.textContent = 'Congrats! You Won!';
+    startButton.addEventListener('click', () => {
+      location.reload();
+    });
+  } if (missed === 5) {
+    overlay.className = 'lose';
+    overlay.style.display = '';
+    title.textContent = 'Bummer, try again!';
+    startButton.textContent = 'Try Again';
+    startButton.addEventListener('click', () => {
+      location.reload();
+    });
+  }
+
+}
 //Event Listener
    window.addEventListener('click', () => {
-         if (event.target.tagName === 'BUTTON') {
+         if (event.target.tagName === 'BUTTON') { //listens for btns only
            event.target.className = 'chosen';
            event.target.disabled = 'true';
 
            let letterFound = checkLetter(event.target);
 
-           if (letterFound = null){
+           if (letterFound === null){
              missed += 1;
+             for (let i = 0; i<=images.length; i + 1){
+               if (letterFound === null)
+                images[i].src = 'images/lostHeart.png';
+
+             }
           }
+          checkWin();
+
+
       }
      }
     );
 
-for (let i = 0; i < gameButtons.length; i += 1) {
-  for (let i = 0; i < correct.length; i += 1) {
-      window.addEventListener('keypress', () => {
-         if (event.key.toUpperCase() === correct[i].textContent.toUpperCase()) {
-          correct[i].classList.add('show');
-        }
-            if (event.key === gameButtons[i].textContent) {
-              gameButtons[i].disabled = 'true';
-              gameButtons[i].className = 'chosen';
-        }
-      })
-    }
-}
-
-//checking the checkLetter function
-
-
-
-//Same as above, except it listens for keyboard presses and sets those values
-// to uppercase without worrying about case sensitivity, then adds the class name 'show'
-//      window.addEventListener('keypress',() => {
-//            if (event.key.toUpperCase() === letterFound.toUpperCase()) {
-//             return letterFound;
-//             show.className = 'show';
-//
-//           } else {
-//             return null;
-//           }
-//          })
-// }
 
 
 
@@ -131,72 +133,28 @@ for (let i = 0; i < gameButtons.length; i += 1) {
 
 
 
-
-
-
-
-
-
-
-
-// for (let i = 0; i < correct.length; i += 1) {
-//    let guess = correct[i].textContent;
-//    let show = correct[i]
-//
-//   for (let i = 0; i < gameButtons.length; i += 1) {
-//    gameButtons[i].addEventListener('click', () => {
-//          if (event.target.textContent.toUpperCase() === guess.toUpperCase()) {
-//           console.log(guess);
-//           show.className = 'show';
-//
-//          }
-//        })
-//      }
-//
-//
-//      window.addEventListener('keypress', () => {
-//            if (event.key.toUpperCase() === guess.toUpperCase()) {
-//             console.log(guess);
-//             show.className = 'show';
-//
-//            }
-//          })
-// }
-
-
-
-
-
-
-// for (let i = 0; i < correct.length; i += 1) {
-//   if (correct[i] === guess) {
-//     correct[i].className = 'show';
-//   }
-// }
-
-
-
-
-
-
-///// This function only returns letters that are found in phrase One of the arrary
-//// Possible use of 'match' in future refactoring
+///////////Function for using keyboard on laptop/computer, couldn't get 'missed'
+///////////variable to work. Saving for future refactor
 
   // for (let i = 0; i < gameButtons.length; i += 1) {
-  //   gameButtons[i].addEventListener('click', () => {
-  //     if (phrases.One.match(event.target.textContent) ) {
-  //       console.log(event.target.textContent);
-  //     }else {
-  //       console.log('sorry');
-  //     }
+  //   let letterFound = false;
+  //   for (let i = 0; i < correct.length; i += 1) {
+  //       window.addEventListener('keypress', () => {
+  //          if (event.key.toUpperCase() === correct[i].textContent.toUpperCase()) {
+  //           correct[i].classList.add('show');
+  //         }
+  //             if (event.key === gameButtons[i].textContent) {
+  //               gameButtons[i].disabled = 'true';
+  //               gameButtons[i].className = 'chosen';
+  //               letterFound = 'true';
+  //               return letterFound;
+  //         }
   //
-  //   })
+  //       })
+  //     }
   // }
 
 //Object.values(phrases)[i]  <---Good for looping through array to be used above
-
-
-
 
 /////function returns the button clicked to the console
 
