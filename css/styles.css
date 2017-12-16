@@ -20,13 +20,15 @@
 
 * {
   box-sizing: border-box;
+
 }
 
 body {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
-  height: 100vh;
+  max-height: 100vh;
+  margin-top: 1em;
 }
 
 li, ol, ul {

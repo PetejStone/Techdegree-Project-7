@@ -17,7 +17,7 @@ const phrases = [
 // Missed variable set to 'zero' to start the game
   let random = Math.floor(Math.random()*Object.values(phrases).length)+1;
   let missed = 0;
-  let heartsMissing = 0;
+  let heartsMissing = -1; // set to -1 since default start index is 0
 
 
 //Constant variables for the game
@@ -112,15 +112,10 @@ function checkWin() {
 
            if (letterFound === null){
              missed += 1;
-             for (let i = 0; i<=images.length; i + 1){
-               if (letterFound === null)
-                images[i].src = 'images/lostHeart.png';
-
-             }
-          }
+             heartsMissing += 1;
+             images[heartsMissing].src = 'images/lostHeart.png';
+              }
           checkWin();
-
-
       }
      }
     );
