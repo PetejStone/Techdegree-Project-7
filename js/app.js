@@ -1,4 +1,3 @@
-
 //Phrases defined at top so I can use them in variables below
 const phrases = [
   'Peter Piper picked a pack of pickled relish',
@@ -88,6 +87,7 @@ function checkWin() {
     overlay.className = 'win';
     overlay.style.display = '';
     title.textContent = 'Congrats! You Won!';
+    startButton.textContent = 'Play Again!';
     startButton.addEventListener('click', () => {
       location.reload();
     });
